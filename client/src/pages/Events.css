@@ -1,0 +1,52 @@
+.events-page {
+  padding: 30px;
+}
+
+.events-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.events-layout {
+  display: flex;
+  gap: 30px;
+}
+
+/* Events grid */
+.events-grid {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Filter box */
+.events-filter {
+  flex: 1;
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 12px;
+  height: fit-content;
+}
+
+.events-filter h3,
+.events-filter h4 {
+  margin-bottom: 10px;
+}
+
+.events-filter label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.filter-btn {
+  margin-top: 14px;
+  width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .events-layout {
+    flex-direction: column;
+  }
+}

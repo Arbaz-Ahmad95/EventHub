@@ -1,0 +1,10 @@
+.dashboard {
+max-width: 900px;
+margin: auto;
+padding: 20px;
+}
+
+
+.dashboard h2 {
+margin-bottom: 10px;
+}
