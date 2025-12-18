@@ -1,8 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    setUser(null);
+    navigate("/login");
+  };
+
   return (
     <header className="navbar">
       <div className="navbar-container">
@@ -19,10 +35,21 @@ function Navbar() {
           <Link to="/about">About us</Link>
         </div>
 
-        {/* Right buttons */}
+        {/* Right section */}
         <div className="navbar-buttons">
-          <Link to="/login" className="login-btn">Log in</Link>
-          <Link to="/register" className="signup-btn">Sign up</Link>
+          {user ? (
+            <>
+              <span className="user-name">Hi, {user.name}</span>
+              <button className="logout-btn" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="login-btn">Log in</Link>
+              <Link to="/register" className="signup-btn">Sign up</Link>
+            </>
+          )}
         </div>
       </div>
     </header>
